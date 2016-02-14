@@ -1,0 +1,5 @@
+# Ignore
+.DS_Store
+Thumbs.db
+
+lab*/solutions/
