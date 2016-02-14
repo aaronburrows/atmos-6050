@@ -2,7 +2,7 @@
 
 In many ways programing is like writing a journal article. It needs to follow a logical order and needs to follow some general guidelines so that others can pick up your code and be able to follow along and understand your calculations. What good is your solution if others can use it or it can't be peer reviewed?
 
-This is not an exhaustive list. Many of these standards come from industry guidance and governmental programming guidelines (mainly NASA, NOAA and the NWS). Much the formatting and variable declarations are rooted in classical programming and FORTRAN interoperability.
+This is not an exhaustive list. Many of these standards come from industry guidance and governmental programming guidelines (mainly NASA, NOAA and the NWS). Much the formatting and variable declarations are rooted in classical programming and Fortran interoperability.
 
 
 ## Comments & Commented Out Code:
