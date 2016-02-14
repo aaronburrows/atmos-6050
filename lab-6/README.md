@@ -13,10 +13,10 @@
     - Run data retrievals
     - Plot the data
 
-You should read the short summary of [General Code Practices](general-code-practices.md) before you go much farther.  Your code will not only be graded on its ability to function properly, but is it easy to read and follows general conventions.
+You should read the short summary of [General Code Practices](general-code-practices.md) before you go much further.  Your code will not only be graded on its ability to function properly, but also whether it is easy to read and follows general conventions.
 
 ### Pre-process raw data file
-Ideally in the real world you would want to automate this process by creating a computer script to do this work for you as often during a field campaign you often collect more data than you know what to do with.  Also by automating this process you reduce the human errors such as mis-treating the data ("treating" meaning preparing the data).  You will see in the "Cupsonde" lab, we have provided you with a Perl script to automate the pre-processing of the data.  For this lab you can do this quickly for your single data file using any text editor of your choice.  Below is an example of how to do this using a regular text editor and _Vi_.
+Ideally in the real world you would want to automate this process by creating a computer script to do this work for you as often during a field campaign you collect more data than you know what to do with.  Also by automating this process you reduce the human errors such as mis-treating the data ("treating" meaning preparing the data).  You will see in the "Cupsonde" lab, we have provided you with a Perl script to automate the pre-processing of the data.  For this lab you can do this quickly for your single data file using any text editor of your choice.  Below is an example of how to do this using a regular text editor and _Vi_.
 
 Using a standard text editor simple do the following:
   - Open your data file
@@ -43,7 +43,7 @@ This will replace all the **"NAN"** with **-9999**. Then press `escape`. To exit
 ### Read data into Matlab
 Using the following code, read in your pre-processed data file and save file the file as a `MAT` file.  For other languages please store as a NetCDF/HDF file.  If you are truly brave and do this assignment in C/Fortran & GNUPLot, you can use whatever text file format you choose.
 
-Before we get too far ahead of ourselves lets think about the steps involved in the post processing phase of our code.
+Before we get too far ahead of ourselves, let's think about the steps involved in the post processing phase of our code.
 
 1. Read in file
 2. Break the input string apart into new variables
@@ -73,7 +73,7 @@ vector_time = result{1};
 posix_time  = datenum(vector_time) - datenum('1970-01-01');
 ```
 
-Saving your processed variables is pretty simple now.  Matlab takes the pain out of the process by giving you the `save()` command.  Pretty simple to use, just tell it the file name followed by the variables you want to store.  We're adding the `v7.3` option just to be verbose about the file format.  After the file is saved, use the `whos()` function to poke the file to see what the dimensions are.
+Saving your processed variables is pretty simple now.  Matlab takes the pain out of the process by giving you the `save()` command.  It's pretty simple to use; just tell it the file name followed by the variables you want to store.  We're adding the `v7.3` option just to be verbose about the file format.  After the file is saved, use the `whos()` function to poke the file to see what the dimensions are.
 
 ```Matlab
 % Save in output file
@@ -133,7 +133,7 @@ The quick summary of this is: we look for start and stop indices and then assign
 
 #### Retrievals
 
-A retrieval in its simplest form is a algorithm in which you give it data, and retrieve a derived value.  Nearly every satellite product you use, and most forecasting tools are based on retrievals.  For this lab you will need to derive dew point temperature and daily minima/maxima values.  Finding the daily minima/maxima temperatures is not a retrieval by definition, the process to find it computationally is very similar, so we will keep it in this section of code.  Don't worry, this is not a computer science class where you'll need to write your own sorting functions, but we will use classic methods and not Matlab's intrinsic tools.
+A retrieval in its simplest form is an algorithm in which you give it data, and retrieve a derived value.  Nearly every satellite product you use, and most forecasting tools are based on retrievals.  For this lab you will need to derive dew point temperature and daily minima/maxima values.  Finding the daily minima/maxima temperatures is not a retrieval by definition, but the process to find it computationally is very similar, so we will keep it in this section of code.  Don't worry, this is not a computer science class where you'll need to write your own sorting functions, but we will use classic methods and not Matlab's intrinsic tools.
 
 First the dew point problem.  Using the following format for a function in Matlab, use the links in the comments to write the equation to calculate dew point from temperature and relative humidity (RH).
 
@@ -196,9 +196,11 @@ end
 
 #### Making the graph
 
-We done quite a bit of work up to this point.  Now comes the fun part of creating the graphics that allow us to interpret the data.
+We have done quite a bit of work up to this point.  Now comes the fun part of creating the graphics that allow us to interpret the data.
 
-Below is an example of my first plot, you can find the image [HERE](temp-dewpoint.png).  Take some time to understand what is happeing here.  This example covers nearly everything you need to know about basic XY plotting in Matlab.  Of course there is countless customization options and a few different was to go about this, so don't be afraid to try new things rather then just copy-and-paste this code.
+Below is an example of my first plot.  Take some time to understand what is happening here.  This example covers nearly everything you need to know about basic XY plotting in Matlab.  Of course there are countless customization options and a few different ways to go about this, so don't be afraid to try new things rather than just copy-and-paste this code.
+
+![temp-dewpoint][fig1]
 
 > When writing your code, you should comment and explain what you are doing in your initial plot, then you can reduce your comments in subsequent images to things that aren't already explained.
 
@@ -236,7 +238,9 @@ if (do_fig1 == 1)
 end
 ```
 
-Creating sub plots takes just a few extra lines of code.  Consider the following when making your day-by-day plots.
+Creating sub plots takes just a few extra lines of code.  Consider the following when making your day-by-day plots like this
+
+![day-by-day][fig2]
 
 ```Matlab
 % Figure 2
@@ -300,8 +304,13 @@ if (do_fig2 == 1)
 
 end
 ```
+
 > Even if you don't use this code, explain what is happening here in your lab report.  Trivial as it may sound, the methods here will help you later on when you need to automate plotting, as well as it will help you write cleaner and more concise code.
 
 ## In closing
 
-This lab covers a lot of information and a good programming skill set can take years to develop.  The best advice I can give, is experiment with code, look at other people's code both good and bad.  You'll know good code when you see it and bad when you see it.  Don't focus on using just one language either, if you understand *how* to solve the problem, then you'll be able to adapt to any other computer language quickly.
+This lab covers a lot of information and a good programming skill set can take years to develop.  The best advice I can give is experiment with code, and look at other people's code both good and bad.  You'll know good code when you see it and bad when you see it.  Don't focus on using just one language either; if you understand *how* to solve the problem, then you'll be able to adapt to any other computer language quickly.
+
+
+[fig1]: Temp-Dewpoint.png "Figure1"
+[fig2]: day-by-day.png "Figure2"
